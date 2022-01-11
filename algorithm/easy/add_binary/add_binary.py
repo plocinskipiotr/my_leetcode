@@ -1,32 +1,13 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
-        a = a[::-1]
-        b = b[::-1]
-        i = 0
-        r = 0
-        c = ''
+        i, carry, res = -1, 0, ''
+        aL, bL = -len(a), -len(b)
 
-        while a[i] and b[i]:
-            int_a = int(a[i])
-            int_b = int(b[i])
-
-            if int_a + int_b + r == 0:
-                c[i], r = 0, 0
-            if int_a + int_b + r == 1:
-                c[i], r = 1, 0
-            if int_a + int_b + r == 2:
-                c[i], r = 0, 1
-            if int_a + int_b + r == 3:
-                c[i], r = 1, 1
-
-            i += 1
-
-        long = max(a,b)
-
-        while long[i] and r:
-            int_long = int(long[i])
-            if int_long + r == 1:
-                c[i] = 1
-                return c
-            if int_long + r == 2:
-
+        while i >= min(aL, bL):
+            el_a = int(a[i]) if i >= aL else 0
+            el_b = int(b[i]) if i >= bL else 0
+            r = (el_a + el_b + carry) % 2
+            res = ''.join([str(r),res])
+            carry = 1 if el_a + el_b + carry > 1 else 0
+            i -= 1
+        return "1" + res if carry else res
