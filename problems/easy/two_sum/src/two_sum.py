@@ -1,17 +1,10 @@
 class Solution:
     def twoSum(self, nums: list[int], target: int) -> list[int]:
-        hashmap = self.reversed_hashmap(nums)
 
-        for i in range(len(nums)):
-            result = target - nums[i]
-            if result in hashmap:
-                if i != hashmap[result]:
-                    return [i, hashmap[result]]
-
-    def reversed_hashmap(self, nums: list[int]) -> dict:
-        hashmap = dict()
-
-        for item in range(len(nums)):
-            hashmap[nums[item]] = item
-
-        return hashmap
+        d = {}
+        nums_size = len(nums)
+        for i in range(nums_size):
+            if nums[i] in d:
+                return [i, d[nums[i]]]
+            diff = target - nums[i]
+            d |= {diff: i}
