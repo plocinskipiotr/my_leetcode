@@ -4,13 +4,10 @@ class Solution:
 
         while l <= r:
             mid = (l + r) // 2
-
-            if nums[mid] == target:
-                return mid
-
             if nums[mid] < target:
                 l = mid + 1
-            else:
+            elif nums[mid] > target:
                 r = mid - 1
-
+            else:
+                return mid
         return l
