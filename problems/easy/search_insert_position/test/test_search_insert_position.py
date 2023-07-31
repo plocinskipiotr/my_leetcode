@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from search_insert_position import Solution
+from problems.easy.search_insert_position.src.search_insert_position import Solution
 
 
 class TestSolution(TestCase):
