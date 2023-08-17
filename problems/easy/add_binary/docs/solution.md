@@ -17,3 +17,7 @@
 | Memory | Runtime |
 |--------|---------|
 | O(n)   | O(n)    |
+
+# Hint
+It can be done better, extending the shorter sequence to the size of longer sequence is redundant.
+On the other hand, in this way the code is much simpler and there are no unnecessary operations performed
